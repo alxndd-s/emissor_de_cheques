@@ -1,0 +1,131 @@
+input#resultado{
+    width: 500px;
+    height: 100px;
+}
+input.favorecido{
+
+    font-size:10px;
+    width: 400px;
+    height: 12px;
+
+}
+input.valor{
+    font-size:10px;
+    width: 100px;
+    height: 12px;
+
+}
+input.data{
+    font-size:10px;
+}
+
+label#labelqtdcheques{
+    font-size:9px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+input#qtdcheques{
+    width: 20px;
+    height: 10px;
+    font-size:9px;
+
+}
+
+div#labelfavorecido{
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 2px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #dadaff;
+    font-size:11px;
+    width: 405px;
+    height: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+
+}
+div#labelvalor{
+    
+
+    border: 1px solid rgb(179, 179, 179);
+
+
+    border-radius: 2px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #dadaff;
+    font-size:11px;
+    width: 105px;
+    height: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+
+}
+
+div#labeldata{
+    
+
+    border: 1px solid rgb(179, 179, 179);
+
+
+    border-radius: 2px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #dadaff;
+    font-size:11px;
+    width: 87px;
+    height: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+
+}
+
+div#bordainput{
+
+    background-color: rgb(231, 231, 231);
+
+    border: 3px solid rgb(231, 231, 231);
+    border-radius: 2px;
+}
+
+div#bordainputext{
+
+    background-color: rgb(255, 255, 255);
+
+    border: 1px solid #894fd4;
+    border-radius: 2px;
+
+}
+
+div#configcheques {
+    padding: 5px;
+    background-color: rgb(224, 224, 224);
+
+    border: 1px solid #894fd4;
+    border-radius: 2px;
+
+}
+
+div#inputes1{
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 1px;
+    
+
+  }
+
+  div#header{
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: auto;
+    text-align: center;
+
+  }
