@@ -6,35 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emissor de Cheque</title>
     <link rel="stylesheet" href="emissor.css">
+    <link rel="icon" type="imagem/png" href="/img/cheque.png" />
     
     <script src="emissor.js"></script>
+    <!-- <script>
+        if (document.addEventListener) {
+            document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+            return false;
+        });
+        } else { //Versões antigas do IE
+            document.attachEvent("oncontextmenu", function(e) {
+            e = e || window.event;
+            e.returnValue = false;
+            return false;
+        });
+        }
+    </script> -->
 </head>
-<body>
+<body onload = "listaprimeirocheque(),pegadataatual()">
 
     <div id = "header">Emissor de Cheque</div>
     <p></p>
     <div id = "configcheques">
         
         <label for="" id = "labelqtdcheques">QUANT. CHEQUES</label>
-        <input type="text" id="qtdcheques" value="0" onchange="listarcheques()">
+        <input type="text" id="qtdcheques" value="1" onchange="listarcheques(), pegadataatual()">
+        
+        <input type="checkbox" name="" id="checkboxmot" onchange="chequemotorista()">
+        <label for="" id = "labelqtdcheques">MOTORISTAS</label>
+        
 
 
     </div>
     <p></p>
+        <button onclick="gerarPRN()">Emitir Cheque</button>
+    <p></p>
     <div id="bordainputext">
         <div id="bordainput">
             <div id = "inputes1">
-
+                
 
             
                 <div id = "labelfavorecido" class="inputes">FAVORECIDO</div><div id = "labelvalor" class="inputes">VALOR</div><div id = "labeldata" class="inputes">DATA</div>
             </div>
             
-            <div class="inputvalores">
+            <table id="tabeladeinput">
 
+            </table>
 
-
-            </div>
+            
         
 
             </div>  
@@ -46,14 +67,37 @@
         </p>
 
         
-        <button onclick="gerarPRN()">Emitir Cheque</button>
+
     </div>
     <div>
         
     <datalist id="favorecidos">
-        <option value="ALEXANDRE RODRIGUES DOS SANTOS">
-        <option value="ADRIANO DE PAIVA SILVA ME">
-        <option value="EXPRESSO MOREIRA">
+
+        <option value ='HMAX COMBUSTIVEIS E LUBRIFICANTES LTDA'>
+        <option value ='ADRIANO DE PAIVA SILVA'>
+        <option value ='POSTO DE COMB ATIBAIA SP LTDA'>
+        <option value ='MC CASTRO TRANSPORTES LTDA'>
+        <option value ='POSTO 22 - ATIBAIA LTDA'>
+        <option value ='IRES DISTRIBUIDORA LTDA - ME'>
+        <option value ='EXPRESSO MOREIRA LTDA'>
+        <option value ='P H DE OLIVEIRA TRANSPORTES LTDA'>
+        <option value ='ADRIANO DE OLIVEIRA LOPES'>
+        <option value ='NAYARA GUIMARAES PEREIRA 13101863678'>
+        <option value ='GILMAR RAIMUNDO MARTINS'>
+        <option value ='VCB CARGAS LTDA'>
+        <option value ='VIVA TRANSPORTES LTDA -ME'>
+        <option value ='R F TRANSPORTES LTDA'>
+        <option value ='TRANSPORTES SILVA SA LTDA'>
+        <option value ='HN TRANSPORTES EIRELI'>
+        <option value ='TRANSPORTADORA TININHO LTDA'>
+        <option value ='TRANSPORTADORA MACEDO LTDA'>
+        <option value ='ALVORADA PNEUS DISTRIBUIDORA AUTOMOTIVA LTDA'>
+        <option value ='TRANSPORTADORA D MINAS LTDA'>
+        <option value ='BR LOG TRANSPORTES LTDA'>
+        <option value ='CASA 505 LTDA.'>
+        <option value ='ATHOS AZARA SOUZA ME'>
+        <option value ='HMAX LOGISTICA E TRANSPORTE LTDA'>
+
     </datalist>
     </div>
 </body>
