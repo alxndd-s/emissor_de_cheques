@@ -148,6 +148,7 @@ div#header{
     border-radius: 5px;
     padding: 1px;
     margin-top: 6px;
+    font-size: 10px;
 
 }
 
@@ -158,6 +159,7 @@ div#header{
     border-radius: 5px;
     padding: 1px;
     margin-top: 6px;
+    font-size: 10px;
     
 
 }
@@ -198,4 +200,10 @@ td#botoescopiar{
 
     display: flex;
     
+}
+
+input#chequesmotoristas{
+    height: 12px;
+    width: 500px;
+    font-size: 10px;
 }

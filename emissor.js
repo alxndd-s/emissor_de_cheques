@@ -41,12 +41,7 @@ function listarcheques(){
     </tr> 
     
     `
-    
-    
-  
-  
 
-    
 
   }
 
@@ -192,14 +187,16 @@ function gerarPRN() {
     var linha6 = espaco.repeat(7) + dataconver + espaco.repeat(10) + favorecido + espaco.repeat(91 - favorecido.length)
 
     var linha7 = espaco.repeat(118)
-    var datatamanho = "CANDEIAS," + espaco.repeat(5) + data.slice(8,10) + espaco.repeat(7) + meses[Number(data.slice(5,7))-1] + espaco.repeat(7) + data.slice(0,4)
+    var datatamanho = "CANDEIAS," + espaco.repeat(5) + data.slice(8,10) + espaco.repeat(17-(meses[Number(data.slice(5,7))-1].length)) + meses[Number(data.slice(5,7))-1] + espaco.repeat(7) + data.slice(0,4)
     var linha8 = espaco.repeat(118-datatamanho.length) + datatamanho 
     var linha9 = espaco.repeat(118)
     var linha10 = espaco.repeat(118)
     var linha11 = espaco.repeat(118)
     var linha12 = espaco.repeat(17-valorcanhoto.length) + valorcanhoto + espaco.repeat(101)
     var linha13 = espaco.repeat(118)
-    var linha14 = espaco.repeat(118)
+    
+    var bompara = ''
+    var linha14 = espaco.repeat(118) // adicionar 23 caracteres com bom para
     var linha15 = espaco.repeat(118)
     var linha16 = espaco.repeat(118)
     var linha17 = espaco.repeat(118)
@@ -446,7 +443,9 @@ function chequemotorista(){
     var criarinput = document.createElement('input')
     criarinput.id = 'chequesmotoristas'
     criarinput.class = 'chequesmotoristas'
+    criarinput.setAttribute('placeholder', "Cole aqui o Array : [{favorecido:exemplo,valorcheque:123,45},{favorecido:exemplo1,valorcheque:123,45}]")
     criarinput.setAttribute('onchange', 'listachequemot()')
+
     configcheque.appendChild(criarinput)
 
   }else{
@@ -460,43 +459,36 @@ function chequemotorista(){
 // fazer com que pege o lenght abaixo e liste o cheques, depois jogue os valores dos cheques nos campos 
 function listachequemot(){
 
-  var gettext = document.getElementById('chequesmotoristas').value
-  
-  var listacheques = gettext.split('-')
+  var gettext = eval(document.getElementById('chequesmotoristas').value)
 
-  var chequemotlenght = listacheques.length
-  console.log(chequemotlenght)
-  console.log(listacheques[33])
-  document.getElementById('valor1').value = listacheques[33]
-  
-
-  // for (let item = 0; item <= (chequemotlenght/2); item++){
+  console.log(gettext)
 
 
 
+  var chequemotlenght = gettext.length
 
+  document.getElementById('qtdcheques').value = chequemotlenght
 
+  listarcheques()
 
-  // }
+  for (let item = 0; item < (chequemotlenght); item ++){
 
 
 
 
 
+    document.getElementById(`favorecido${item+1}`).value = gettext[item].favorecido
+
+    document.getElementById(`valor${item+1}`).value = gettext[item].valorcheque.toString().replace(".",",")
 
 
+   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
+// 0 1 0
+// 2 3 1
+// 4 5 2
+document.getElementById('data1').value = pegadataatual()
 }
+
+// ARRUMAR CIDADE E DATA
