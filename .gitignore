@@ -1,5 +1,5 @@
-.html
-.js
-.css
-.txt
-img
+*.html
+*.js
+*.css
+*.txt
+*img
