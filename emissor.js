@@ -613,7 +613,7 @@ function chequemotorista(){
     var criarinput = document.createElement('input')
     criarinput.id = 'chequesmotoristas'
     criarinput.class = 'chequesmotoristas'
-    criarinput.setAttribute('placeholder', "Cole aqui o Array : [{favorecido:exemplo,valorcheque:123,45},{favorecido:exemplo1,valorcheque:123,45}]")
+    criarinput.setAttribute('placeholder', "Cole aqui o Array : [{favorecido:'SEBASTIAO DA SILVA',valorcheque:'2557,45'},{favorecido:'JOAO DE SOUSA',valorcheque:'4445,35'}]")
     criarinput.setAttribute('onchange', 'listachequemot()')
 
     configcheque.appendChild(criarinput)
