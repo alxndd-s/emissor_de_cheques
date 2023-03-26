@@ -144,22 +144,27 @@ div#header{
 #copiarcheques {
     border: 1px solid #575757;
     background-color: #dadaff;
-    height: 18px;
+    height: 16px;
     border-radius: 5px;
     padding: 1px;
     margin-top: 6px;
     font-size: 10px;
+    position: relative;
+    top: -1.8px
 
 }
 
 #copiarvalor {
     border: 1px solid #575757;
     background-color: #dadaff;
-    height: 18px;
+    height: 16px;
     border-radius: 5px;
     padding: 1px;
     margin-top: 6px;
     font-size: 10px;
+    position: relative;
+    top: -1.8px;
+    left: 5px
     
 
 }
@@ -188,6 +193,7 @@ transition: 0.5s;
 
 opacity: 0.7;
 
+
 }
 
 #imgcopiavalor {
@@ -206,4 +212,50 @@ input#chequesmotoristas{
     height: 12px;
     width: 500px;
     font-size: 10px;
+}
+
+.botaogerarprn {
+    
+    font-size: 11px;
+    
+
+}
+
+.botaogerarprn:hover {
+
+    
+    background-color: #dadaff;
+    border: 1px solid #894fd4;
+    border-radius: 2px;
+    font-weight: bold;
+
+}
+
+#predatacheque{
+
+    width: 14px;
+    height: 10px;
+    font-size: 10px;
+
+}
+
+input#checkboxprazo{
+    
+    width: 12px;
+    height: 9px;
+    font-size:9px;
+
+}
+
+div#valortotal{
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    
+    position: relative;
+    border-radius: 5px;
+    left: 350px;
+    top: 5px;
+
+    
 }

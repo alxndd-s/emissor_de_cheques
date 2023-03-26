@@ -6,7 +6,7 @@ function listaprimeirocheque() {
   gettable.innerHTML =  `
     <tr>
       <td><input list="favorecidos" id = "favorecido1" class = "favorecido" value=""></input></td>
-      <td><input type="text" id = "valor1" class = "valor" value="" onKeyUp="mascaraMoeda(this, event)"></input></td>
+      <td><input type="text" id = "valor1" class = "valor" value="" onKeyUp="mascaraMoeda(this, event)" onchange ="somarcheques()" ></input></td>
       <td><input type="date" id = "data1" class = "data"></input></td>
       <td id = "botoescopiar" ><button id ="copiarcheques" onclick = "copiarfavorecido()" title="Duplica o primeiro favorecido nos outros cheques">Duplic.Fav.</button><button id ="copiarvalor" onclick = "copiarvalor()" title="Duplica o primeiro valor nos outros cheques">Duplic.Valor</button></td>
     </tr>
@@ -29,14 +29,21 @@ function listarcheques(){
   for (let item = 1; item <= qtdcheque-1; item++){
 
     var pegatabela = document.querySelector('table#tabeladeinput')
-    
 
+    var onchangevalor = ''
+    
+    if (item == (qtdcheque-1)){
+
+      onchangevalor = 'somarcheques()'
+
+
+    }
 
 
     pegatabela.innerHTML +=  `                
     <tr>
       <td><input list="favorecidos" id = "favorecido${item+1}" class = "favorecido" value=""></input></td>
-      <td><input type="text" id = "valor${item+1}" class = "valor" value="" onKeyUp="mascaraMoeda(this, event)"></input></td>
+      <td><input type="text" id = "valor${item+1}" class = "valor" value="" onchange="somarcheques()" onKeyUp="mascaraMoeda(this, event)" ></input></td>
       <td><input type="date" id = "data${item+1}" class = "data" value="${pegadataatual()}"></input></td>
     </tr> 
     
@@ -86,7 +93,79 @@ function copiarvalor(){
 
   }
 
+  somarcheques()
+
 }
+
+
+function gerarhmax() {
+
+
+var espaco = " "
+
+//valor em reais
+var linha1 =espaco.repeat(118)
+//linha em branco
+var linha2 = espaco.repeat(118)
+
+//valor por extenso 1
+var linha3 = espaco.repeat(118)
+
+//valor por extenso 2
+
+var linha4 = espaco.repeat(118)
+
+//linha em branco
+
+var linha5 = espaco.repeat(118)
+
+var favorecido = "HMAX COMBUSTIVEIS E LUBRIFICANTES LTDA"
+
+var linha6 = espaco.repeat(7) + espaco.repeat(20) + favorecido + espaco.repeat(91 - favorecido.length)
+
+var linha7 = espaco.repeat(118)
+var linha8 = espaco.repeat(118)
+var linha9 = espaco.repeat(118)
+var linha10 = espaco.repeat(118)
+var linha11 = espaco.repeat(118)
+var linha12 = espaco.repeat(118)
+var linha13 = espaco.repeat(118)
+
+
+var linha14 = espaco.repeat(118) 
+var linha15 = espaco.repeat(118)
+var linha16 = espaco.repeat(118)
+var linha17 = espaco.repeat(118)
+var linha18 = espaco.repeat(118)
+
+
+// Cria a string formatada do arquivo PRN
+
+var cheque = (linha1 + "\r\n" + linha2 + "\r\n" + linha3 + "\r\n" + linha4 + "\r\n" + linha5 + "\r\n" + linha6 + "\r\n" + linha7 + "\r\n" + linha8 + "\r\n" + linha9 + "\r\n" + linha10 + "\r\n" + linha11 + "\r\n" + linha12 + "\r\n" + linha13 + "\r\n" + linha14 + "\r\n" + linha15 + "\r\n" + linha16 + "\r\n" + linha17 + "\r\n"+ linha18 + "\r\n");
+
+
+
+// Cria um objeto Blob com a string formatada
+
+
+
+var blob = new Blob([cheque], {type: "text/plain;charset=utf-8"});
+
+// Cria um link de download e adiciona-o à página
+var link = document.createElement("a");
+link.href = window.URL.createObjectURL(blob);
+link.download = "Favorecido HMAX.prn";
+document.body.appendChild(link);
+
+
+// Clica no link de download para iniciar o download
+link.click();
+
+
+
+
+}
+
 
 
 function gerarPRN() {
@@ -94,7 +173,7 @@ function gerarPRN() {
 
         // seleciona todas as tags 'tr' no documento HTML
   const linhasTabela = document.querySelectorAll('tr');
-  console.log(linhasTabela.length)
+  
   // itera sobre a lista de tags 'tr'
   var cheque = ''
 
@@ -214,11 +293,23 @@ function gerarPRN() {
   
   
   var blob = new Blob([cheque], {type: "text/plain;charset=utf-8"});
+
+  var nomearquivo = `${linhasTabela.length} Cheque TCM .prn`;
+
+  if(linhasTabela.length > 1){
+
+    nomearquivo = `${linhasTabela.length} Cheques TCM .prn`;
+
+  }
+
   
+
   // Cria um link de download e adiciona-o à página
   var link = document.createElement("a");
   link.href = window.URL.createObjectURL(blob);
-  link.download = "Cheque TCM.prn";
+
+  link.download = nomearquivo;
+
   document.body.appendChild(link);
 
   
@@ -431,9 +522,88 @@ function motoristas(){
 
 }
 
+function mostraprazo(){
+
+  var checkboxprazo = document.getElementById('checkboxprazo')
+
+  
+
+  if (checkboxprazo.checked) {
+    var getconfigcheques = document.getElementById('configcheques')
+    var criainputpredat = document.createElement('input')
+    criainputpredat.id = 'predatacheque'
+    criainputpredat.type = 'text'
+    criainputpredat.setAttribute('onchange', 'alteradata()')
+    
+
+    getconfigcheques.appendChild(criainputpredat)
+
+
+
+  }else{
+        
+
+    document.location.reload(true);
+
+  }
+
+
+
+}
+
+function verificaqtdcheques(){
+
+  var pegaqtdcheques = document.getElementById('qtdcheques')
+
+  if (pegaqtdcheques.value > 1){
+
+    var getconfigcheques = document.getElementById('configcheques')
+    var criainputcheckprazo = document.createElement('input')
+    criainputcheckprazo.id = 'checkboxprazo'
+    criainputcheckprazo.type = 'checkbox'
+    criainputcheckprazo.setAttribute('onchange', 'mostraprazo()')
+    var crialabelcheckprazo = document.createElement('label')
+    crialabelcheckprazo.id = 'labelqtdcheques'
+    crialabelcheckprazo.textContent = 'PRAZO PAGAMENTO    '
+
+    getconfigcheques.appendChild(criainputcheckprazo)
+    getconfigcheques.appendChild(crialabelcheckprazo)
+
+
+  }
+
+
+}
+
+function alteradata(){
+
+  const cheques = document.querySelectorAll('tr');
+  var primeiradata = document.getElementById('data1').value
+  var qtddias = Number(document.getElementById('predatacheque').value) + Number(1)
+  
+
+  for (let linha = 0; linha <= (cheques.length); linha ++){
+
+
+    if (linha > 1){
+
+      document.getElementById(`data${linha}`).value = somardata(primeiradata, qtddias)
+
+      var primeiradata = document.getElementById(`data${linha}`).value
+
+
+
+    }
+    
+
+  }
+
+
+}
+
 function chequemotorista(){
 
-  document.getElementById('chequesmotoristas')
+  
 
   var checkbox = document.getElementById('checkboxmot')
 
@@ -461,7 +631,8 @@ function listachequemot(){
 
   var gettext = eval(document.getElementById('chequesmotoristas').value)
 
-  console.log(gettext)
+  
+
 
 
 
@@ -485,10 +656,68 @@ function listachequemot(){
    }
 
 
-// 0 1 0
-// 2 3 1
-// 4 5 2
+
+
+
 document.getElementById('data1').value = pegadataatual()
 }
 
-// ARRUMAR CIDADE E DATA
+
+
+
+function somardata (data, dias){
+
+  let dataatual = new Date(data)
+
+
+  dataatual.setDate(dataatual.getDate() + parseInt(dias));
+ 
+  let ano = dataatual.getFullYear();
+  let mes = dataatual.getMonth() + 1; // Months start at 0!
+  let dia = dataatual.getDate();
+  
+  if (dia < 10) dia = '0' + dia;
+  if (mes < 10) mes = '0' + mes;
+
+  let dataadd = ano + '-' + mes + '-' + dia;
+  
+  return dataadd
+  
+
+}
+
+
+function somarcheques(){
+
+  var divvalortotal = document.querySelector('div#valortotal')
+  
+  
+  const cheques = document.querySelectorAll('tr');
+
+  var valortotal = 0
+
+  for (let cheque = 1; cheque <= cheques.length ; cheque++){
+
+    console.log(`valor${cheque}`)
+
+    var valores = document.getElementById(`valor${cheque}`).value
+    var valorconv = parseFloat(valores.replace(/[^\d,]/g, '').replace(',', '.'));
+
+    if (valores == ""){
+      valorconv = 0
+    }
+    
+    valortotal += valorconv
+    
+
+  }
+
+  var valorforma = valortotal.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2}).replace(',', '.');
+  
+  divvalortotal.innerHTML = ''
+  
+  divvalortotal.innerHTML = `<strong>Valor Total </strong>: R$ ${valorforma}`
+  
+  
+
+}

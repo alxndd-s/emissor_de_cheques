@@ -9,7 +9,7 @@
     <link rel="icon" type="imagem/png" href="/img/cheque.png" />
     
     <script src="emissor.js"></script>
-    <script>
+    <!-- <script>
         if (document.addEventListener) {
             document.addEventListener("contextmenu", function(e) {
             e.preventDefault();
@@ -22,25 +22,29 @@
             return false;
         });
         }
-    </script>
+    </script> -->
 </head>
-<body onload = "listaprimeirocheque(),pegadataatual()">
+<body onload = "listaprimeirocheque(),pegadataatual(), verificaqtdcheques()" id = "bodyprincipal">
 
     <div id = "header">Emissor de Cheque</div>
     <p></p>
     <div id = "configcheques">
         
         <label for="" id = "labelqtdcheques">QUANT. CHEQUES</label>
-        <input type="text" id="qtdcheques" value="1" onchange="listarcheques(), pegadataatual()">
+        <input type="text" id="qtdcheques" value="1" onchange="listarcheques(), pegadataatual(), verificaqtdcheques()">
         
         <input type="checkbox" name="" id="checkboxmot" onchange="chequemotorista()">
         <label for="" id = "labelqtdcheques">MOTORISTAS</label>
-        
+
+
+
+
 
 
     </div>
     <p></p>
-        <button onclick="gerarPRN()">Emitir Cheque</button>
+        <button onclick="gerarPRN()" id = "botaoemitircheque" class = "botaogerarprn">Emitir Cheque</button>
+        <button onclick="gerarhmax()" id = "botaofavorecido" class = "botaogerarprn">Favorecido HMAX</button>
     <p></p>
     <div id="bordainputext">
         <div id="bordainput">
@@ -58,8 +62,13 @@
             
         
 
-            </div>  
+            </div>
+ 
         </div>
+        
+        <div id="valortotal">
+                
+        </div> 
     </div>
     <div>  
         <p>
